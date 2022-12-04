@@ -7,8 +7,8 @@ all: my_mat.a connect
 my_mat.a:my_mat.o
 	ar -rcs my_mat.a my_mat.o
 
-connect:main.o my_mat.o
-	$(CC) $(FLAGS) -fPIC -o connect main.o my_mat.o
+connections:main.o my_mat.o
+	$(CC) $(FLAGS) -fPIC -o connections main.o my_mat.o
 
 my_mat.o:my_mat.c
 	$(CC) $(FLAGS) -fPIC -c my_mat.c
