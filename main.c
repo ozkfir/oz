@@ -10,9 +10,9 @@ int main()
 {
     int mat[Len][Len];
     char command;
-    scanf("%c",&command);
-    while(command!='D')
+    do
     {
+        scanf(" %c",&command);
         if(command=='A')
         {
             build_mat(mat);
@@ -29,12 +29,12 @@ int main()
                 printf("False\n");
 
         }
-        else
+        else if (command=='C')
         {
             int i, j;
             scanf("%d%d", &i, &j);
             printf("%d\n",length_way(mat,i,j));
         }
-    }
+    }while(command!='D');
     return 0;
 }
