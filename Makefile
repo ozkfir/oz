@@ -1,7 +1,7 @@
 CC=gcc
 FLAGS=-Wall -g
 
-all: my_mat.a connect
+all: my_mat.a connections
 
 
 my_mat.a:my_mat.o
