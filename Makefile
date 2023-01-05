@@ -1,21 +1,23 @@
 CC=gcc
 FLAGS=-Wall -g
 
-all: my_mat.a connections
+all:isort txtfind mainsort.a maintxt.a
 
 
-my_mat.a:my_mat.o
-	ar -rcs my_mat.a my_mat.o
+mainsort.a:mainsort.o
+	ar -rcs mainsort.a mainsort.o
+maintxt.a:maintxt.o
+	ar -rcs maintxt.a maintxt.o
+isort:mainsort.o
+	$(CC) $(FLAGS) -fPIC -o isort mainsort.o
+txtfind:maintxt.o
+	$(CC) $(FLAGS) -fPIC -o txtfind maintxt.o
 
-connections:main.o my_mat.o
-	$(CC) $(FLAGS) -fPIC -o connections main.o my_mat.o
-
-my_mat.o:my_mat.c
-	$(CC) $(FLAGS) -fPIC -c my_mat.c
-
-main.o: main.c my_mat.h
-	$(CC) $(FLAGS) -c main.c
+maintxt.o: maintxt.c
+	$(CC) $(FLAGS) -c maintxt.o maintxt.c
+mainsort.o: mainsort.c
+	$(CC) $(FLAGS) -c mainsort.o mainsort.c
 
 .PHONY:clean all
 clean:
-	rm -f *.o *.a connections
+	rm -f *.o *.a isort txtfind
