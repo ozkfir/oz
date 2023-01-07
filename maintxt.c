@@ -13,9 +13,10 @@ int get_line(char *line);
 int main() {
     char text[LINE];
     int end;
-    bzero(text, 256);///257
+    bzero(text, LINE);
     get_line(text);
     char word[WORD];
+    bzero(word,WORD);
     int i = get_word(text, word);
     if (*(text + i) == 'a') {
         bzero(text,LINE);
@@ -32,14 +33,13 @@ int main() {
         bzero(text,LINE);
         get_line(text);
         for (int j = 0; j < 248; ++j) {
+            bzero(text,LINE);
             end = get_line(text);
             print_words(text, word);
             if (end == -1)
                 break;
-            bzero(text, LINE);
-
-        }}
-
+        }
+    }
         return 0;
     }
     int get_line(char *line) {
@@ -55,7 +55,7 @@ int main() {
 
     int substring(char *str1, char *str2) {
         int i = 0, j = 0, wrang = 0;
-        while (i < sizeof(str1)) {///////////
+        while (i < sizeof(str1)) {
             if (*(str1 + i) == *(str2 + j) ||
                 (*(str1 + i) <= 'z' && *(str1 + i) >= 'a' && (*(str1 + i) - 'a' + 'A') == *(str2 + j)) || (
                         *(str1 + i) >= 'A' && *(str1 + i) <= 'Z' && (*(str1 + i) - 'A' + 'a' == *(str2 + j)))) {
@@ -103,11 +103,9 @@ int main() {
         bzero(word, 30);
         while (*text != '\0') {
             text += get_word(text, word);
-
             if (substring(word, str) ) {
                 printf("%s\n", word);
             }
             bzero(word, 30);
         }
-
     }
