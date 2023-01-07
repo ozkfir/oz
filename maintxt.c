@@ -36,7 +36,7 @@ int main() {
             print_words(text, word);
             if (end == -1)
                 break;
-            bzero(text, 256);
+            bzero(text, LINE);
 
         }}
 
@@ -103,7 +103,8 @@ int main() {
         bzero(word, 30);
         while (*text != '\0') {
             text += get_word(text, word);
-            if (substring(word, str)) {
+
+            if (substring(word, str) ) {
                 printf("%s\n", word);
             }
             bzero(word, 30);
